@@ -1,2 +1,4 @@
 # tone-learning-lite
-Playing around with javascript and music tones.
+
+An easy in browser tool to learn to identify musical tones.
+
