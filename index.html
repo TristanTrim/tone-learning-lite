@@ -18,13 +18,14 @@
     <!-- Custom CSS -->
     <link href="css/the-big-picture.css" rel="stylesheet">
 
+    <link href="css/tone_box.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="js/tone.js"></script>
 
 </head>
 
@@ -67,6 +68,10 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <h1>Tone Learning Lite</h1>
+
+                <div id="contentContainer">
+                </div>
+                <script src="js/tone.js"></script>
 
                 <a onclick="play_tone(880)" href="javascript:void(0);">play!</a>
                 <a onclick="stop_tone()" href="javascript:void(0);">stop!</a>
