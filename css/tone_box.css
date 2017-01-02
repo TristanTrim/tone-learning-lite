@@ -8,10 +8,4 @@
     background-color: #F2F2F2;
     cursor: pointer;
 }
-#thing {
-    position: relative;
-    left: 50px;
-    top: 50px;
-    transition: left .5s ease-in, top .5s ease-in;
-}
 
