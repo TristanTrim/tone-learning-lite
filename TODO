@@ -12,3 +12,21 @@ DONE: Get box set up for click events.
  Add nice fadeout to tones.
 
 
+Variations to the game:
+
+Things to be present or not:
+ - The scale labeling the notes
+ - The name of the note to be repeated
+ - The sound of the note to be repeated
+
+So the sensible game modes are:
+ - repeat the note: Everything is present
+ - what's that sound: Scale and sound are present
+ - hear that sound: name and sound are present
+ - by the name: only name is present
+ - by the sound: only sound is present
+
+I think the only sensible way to input answer is to click around until you think you have the sound, and then click "guess" or whatever.
+
+I guess there could also be a mode where you enter the name of the note by clicking the names, or typing them in.
+
