@@ -34,7 +34,7 @@ container.addEventListener("click", getClickPosition, false);
 
 var container_value_start = 0;
 var container_value_end = 500;
-var scale_start = 131;
+var scale_start = 128;
 var scale_end = 523;
 var scale_buf = 5;
 var scale_duration = scale_end - scale_start + 2*scale_buf; 
@@ -46,19 +46,24 @@ function position2frequency(position){
                 +scale_start;//-scale_buf;
 
 }
-// drawing a line
-var ctx;
+// drawing the scale
+var ctx=container.getContext("2d");
 var frequency;
+var note_vertical_offset_count=0;
 for (var note in scale) {
   frequency = scale[note];
   if (scale_start <= frequency && frequency <= scale_end){
     var position = frequency2position(frequency);
-    ctx=container.getContext("2d");
     ctx.beginPath();
     ctx.moveTo(position,0);
     ctx.lineTo(position,30);
     ctx.stroke();
+    //if (note.startsWith("C")&& !note.endsWith("#")) {
+      ctx.font = "12px serif";
+      ctx.fillText(note, position, 42+20*(note_vertical_offset_count%3));
+    //}
   }
+  note_vertical_offset_count++;
 }
 
 // The clicking on the canvas event
