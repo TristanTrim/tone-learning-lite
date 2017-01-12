@@ -4,7 +4,7 @@ DONE: Get box set up for click events.
 DONE:  Place scale on box.
 DONE:  Create music scale data structure
 DONE:  Step through said structure, or relevent parts of it, drawing notes.
-  Fix scale alignment on canvas.
+DONE:  Fix scale alignment on canvas.
   Implement simple hearing test game. One or two octaves. C3 to C5 maybe?
 
  Make the size of the box relative to the page.
