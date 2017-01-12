@@ -32,28 +32,28 @@ var container = document.querySelector("#contentContainer");
 container.addEventListener("click", getClickPosition, false);
 //var myGamePiece = new component(30, 30, "red", 10, 20);
 
-var container_value_start = 0;
-var container_value_end = 500;
+var ctx=container.getContext("2d");
+var input_width = 490;//Why is this a thing? Ack!
 var scale_start = 128;
-var scale_end = 523;
+var scale_end = 524;
 var scale_buf = 5;
-var scale_duration = scale_end - scale_start + 2*scale_buf; 
+var scale_duration = scale_end - scale_start + (2*scale_buf);
 function frequency2position(frequency){
-  return ((frequency-scale_start)/scale_duration)*container_value_end;
+  return ((frequency-scale_start)/scale_duration)*ctx.canvas.width;
 }
 function position2frequency(position){
-  return (position/container_value_end)*scale_duration
+  return (position/input_width)*scale_duration
                 +scale_start;//-scale_buf;
-
 }
+
 // drawing the scale
-var ctx=container.getContext("2d");
 var frequency;
 var note_vertical_offset_count=0;
 for (var note in scale) {
   frequency = scale[note];
   if (scale_start <= frequency && frequency <= scale_end){
     var position = frequency2position(frequency);
+    console.log(position);
     ctx.beginPath();
     ctx.moveTo(position,0);
     ctx.lineTo(position,30);
@@ -72,6 +72,8 @@ function getClickPosition(e) {
     var xPosition = e.clientX - parentPosition.x;// - (theThing.clientWidth / 2);
     var yPosition = e.clientY - parentPosition.y;// - (theThing.clientHeight / 2);
     var tone = position2frequency(xPosition);
+    console.log(xPosition);
+    console.log(tone);
     if (is_tone){
       stop_tone();
     }
