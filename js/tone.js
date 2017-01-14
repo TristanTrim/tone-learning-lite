@@ -38,15 +38,17 @@ function position2frequency(position){
   return (position/input_width)*scale_duration
                 +scale_start;//-scale_buf;
 }
-
+var scale_segment = [];
+var scale_segment_keys = [];
 // drawing the scale
 var frequency;
 var note_vertical_offset_count=0;
 for (var note in scale) {
   frequency = scale[note];
   if (scale_start <= frequency && frequency <= scale_end){
+    scale_segment[note]=frequency;
+    scale_segment_keys.push(note);
     var position = frequency2position(frequency);
-    console.log(position);
     ctx.beginPath();
     ctx.moveTo(position,0);
     ctx.lineTo(position,30);
@@ -58,7 +60,6 @@ for (var note in scale) {
   }
   note_vertical_offset_count++;
 }
-
  
 // Helper function to get an element's exact position
 function getPosition(el) {
@@ -94,13 +95,32 @@ function getClickPosition(e) {
     var xPosition = e.clientX - parentPosition.x;// - (theThing.clientWidth / 2);
     var yPosition = e.clientY - parentPosition.y;// - (theThing.clientHeight / 2);
     var tone = position2frequency(xPosition);
-    console.log(xPosition);
-    console.log(tone);
     if (is_tone){
       stop_tone();
     }
     play_tone(tone); 
+    if (proximal(tone, scale_segment[current_note])){
+      alert("A winner is you!");
+      start_round();
+    }
     //alert(tone);
 }
-
-
+function proximal(frequency, guessed_frequency){
+    proximity_buffer = 5;
+    if (frequency+proximity_buffer >= guessed_frequency &&
+        frequency-proximity_buffer <= guessed_frequency){
+          return true;
+    }
+    return false;
+}
+   
+// game stuff
+var current_note;
+function start_round() {
+  current_note =
+     scale_segment_keys[
+       scale_segment_keys.length * Math.random() << 0
+     ];
+  alert("Play "+current_note);
+}
+start_round();
