@@ -103,8 +103,7 @@ function getClickPosition(e) {
     play_tone(tone); 
 
     if (proximal(tone, scale_segment[current_note])){
-      alert("A winner is you!");
-      start_round();
+      setTimeout(start_round, 130);
     }
 }
 function proximal(frequency, guessed_frequency){
@@ -118,11 +117,15 @@ function proximal(frequency, guessed_frequency){
    
 // game stuff
 var current_note;
+function repeat_tone() {
+  play_tone(scale_segment[current_note]);
+}
 function start_round() {
   current_note =
      scale_segment_keys[
        scale_segment_keys.length * Math.random() << 0
      ];
-  alert("Play "+current_note);
+  play_tone(scale_segment[current_note]);
+  //alert("Play "+current_note);
 }
 start_round();

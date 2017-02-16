@@ -9,8 +9,8 @@ DONE:  Implement simple hearing test game. One or two octaves. C3 to C5 maybe?
 
 
 DONE: Add tone auto stop.
- Add repeat button.
- Add info log to botom of box.
+DONE: Add repeat button.
+ Add info log to botom of box, put score in it.
  Make the size of the box relative to the page.
 
  Read the rest of the WebAudioApi introduction.
