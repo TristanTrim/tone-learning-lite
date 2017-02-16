@@ -9,12 +9,15 @@ function tone_init(pitch){
   oscillator.frequency.value = pitch; // value in hertz
   oscillator.connect(audioCtx.destination);
 }
+
+var tone_play_time = 150;
+
 function play_tone(pitch){
   if (! is_tone) {
     tone_init(pitch);
     oscillator.start();
     is_tone = true;
-    setTimeout(stop_tone, 130);
+    setTimeout(stop_tone, tone_play_time);
   }
 }
 function stop_tone(){
@@ -26,6 +29,14 @@ function stop_tone(){
 var container = document.querySelector("#contentContainer");
 container.addEventListener("click", getClickPosition, false);
 
+function info_log(text){
+    ctx.fillStyle="#F2F2F2";
+    ctx.fillRect(20,130,150,148); 
+    ctx.font = 12 + "px serif";
+    ctx.fillStyle="#000000";
+    ctx.fillText(text, 20, 148);
+}
+  
 var ctx=container.getContext("2d");
 var input_width = 490;//Why is this a thing? Ack!
 var scale_start = 128;
@@ -91,6 +102,8 @@ function getPosition(el) {
 
 
 // The clicking on the canvas event
+var click_score = 0;
+var win_score = 0;
 function getClickPosition(e) {
     var parentPosition = getPosition(e.currentTarget);
     var xPosition = e.clientX - parentPosition.x;// - (theThing.clientWidth / 2);
@@ -102,9 +115,14 @@ function getClickPosition(e) {
     }
     play_tone(tone); 
 
+    click_score += 1;
     if (proximal(tone, scale_segment[current_note])){
-      setTimeout(start_round, 130);
+      win_score += 1;
+      setTimeout(start_round, tone_play_time*4.5);
     }
+    setTimeout(repeat_tone, tone_play_time*1.5);
+
+    info_log("Score: "+win_score+"/"+click_score);
 }
 function proximal(frequency, guessed_frequency){
     proximity_buffer = 5;
@@ -126,6 +144,6 @@ function start_round() {
        scale_segment_keys.length * Math.random() << 0
      ];
   play_tone(scale_segment[current_note]);
-  //alert("Play "+current_note);
 }
+info_log("Score: "+win_score+"/"+click_score);
 start_round();
