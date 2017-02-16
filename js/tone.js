@@ -14,6 +14,7 @@ function play_tone(pitch){
     tone_init(pitch);
     oscillator.start();
     is_tone = true;
+    setTimeout(stop_tone, 130);
   }
 }
 function stop_tone(){
@@ -95,15 +96,16 @@ function getClickPosition(e) {
     var xPosition = e.clientX - parentPosition.x;// - (theThing.clientWidth / 2);
     var yPosition = e.clientY - parentPosition.y;// - (theThing.clientHeight / 2);
     var tone = position2frequency(xPosition);
-    if (is_tone){
+    
+    if (is_tone){ // check if a note is already sounding, and stop it.
       stop_tone();
     }
     play_tone(tone); 
+
     if (proximal(tone, scale_segment[current_note])){
       alert("A winner is you!");
       start_round();
     }
-    //alert(tone);
 }
 function proximal(frequency, guessed_frequency){
     proximity_buffer = 5;

@@ -5,8 +5,12 @@ DONE:  Place scale on box.
 DONE:  Create music scale data structure
 DONE:  Step through said structure, or relevent parts of it, drawing notes.
 DONE:  Fix scale alignment on canvas.
-  Implement simple hearing test game. One or two octaves. C3 to C5 maybe?
+DONE:  Implement simple hearing test game. One or two octaves. C3 to C5 maybe?
 
+
+DONE: Add tone auto stop.
+ Add repeat button.
+ Add info log to botom of box.
  Make the size of the box relative to the page.
 
  Read the rest of the WebAudioApi introduction.
