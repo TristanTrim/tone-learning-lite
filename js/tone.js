@@ -34,7 +34,7 @@ function info_log(text){
     ctx.fillRect(20,130,150,148); 
     ctx.font = 12 + "px serif";
     ctx.fillStyle="#000000";
-    ctx.fillText(text, 20, 148);
+    ctx.fillText(text, 20, 140);
 }
   
 var ctx=container.getContext("2d");
