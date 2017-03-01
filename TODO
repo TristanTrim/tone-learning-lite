@@ -19,6 +19,8 @@ DONE: Add score percent.
 
  Make the size of the box relative to the page.
 
+ Take score and repeat back out of canvas.
+
  Read the rest of the WebAudioApi introduction.
  Volume ajust.
  Add nice fadeout to tones.
