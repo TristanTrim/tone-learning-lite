@@ -1,5 +1,4 @@
 
-
 DONE: Get box set up for click events.
 DONE:  Place scale on box.
 DONE:  Create music scale data structure
@@ -11,6 +10,13 @@ DONE:  Implement simple hearing test game. One or two octaves. C3 to C5 maybe?
 DONE: Add tone auto stop.
 DONE: Add repeat button.
 DONE: Add info log to botom of box, put score in it.
+
+DONE: Put repeat button into the canvas.
+DONE: Add score percent.
+ Write about page.
+ Comment and clean code.
+ Write readme.md
+
  Make the size of the box relative to the page.
 
  Read the rest of the WebAudioApi introduction.
@@ -35,4 +41,6 @@ So the sensible game modes are:
 I think the only sensible way to input answer is to click around until you think you have the sound, and then click "guess" or whatever.
 
 I guess there could also be a mode where you enter the name of the note by clicking the names, or typing them in.
+
+No, it turns out I'm sticking with keeping the names of the tones visible and having users just click wherever to hear that tone, and the target tone again.
 

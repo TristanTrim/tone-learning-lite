@@ -27,17 +27,20 @@ function stop_tone(){
 
 // The game canvas
 var container = document.querySelector("#contentContainer");
-container.addEventListener("click", getClickPosition, false);
+container.addEventListener("click", canvasClickEvent, false);
 
 function info_log(text){
     ctx.fillStyle="#F2F2F2";
-    ctx.fillRect(20,130,150,148); 
+    ctx.fillRect(20,130,200,148); 
     ctx.font = 12 + "px serif";
     ctx.fillStyle="#000000";
     ctx.fillText(text, 20, 140);
 }
   
 var ctx=container.getContext("2d");
+ctx.font = 12 + "px serif";
+ctx.fillStyle="#000000";
+ctx.fillText("Repeat", 230, 140);
 var input_width = 490;//Why is this a thing? Ack!
 var scale_start = 128;
 var scale_end = 524;
@@ -104,12 +107,16 @@ function getPosition(el) {
 // The clicking on the canvas event
 var click_score = 0;
 var win_score = 0;
-function getClickPosition(e) {
+function canvasClickEvent(e) {
     var parentPosition = getPosition(e.currentTarget);
-    var xPosition = e.clientX - parentPosition.x;// - (theThing.clientWidth / 2);
-    var yPosition = e.clientY - parentPosition.y;// - (theThing.clientHeight / 2);
+    var xPosition = e.clientX - parentPosition.x;
+    var yPosition = e.clientY - parentPosition.y;
     var tone = position2frequency(xPosition);
     
+    if (yPosition>150 && xPosition>350){
+      repeat_tone();
+      return;
+    }
     if (is_tone){ // check if a note is already sounding, and stop it.
       stop_tone();
     }
@@ -122,10 +129,11 @@ function getClickPosition(e) {
     }
     setTimeout(repeat_tone, tone_play_time*1.5);
 
-    info_log("Score: "+win_score+"/"+click_score);
+    score_percent = (100*win_score/click_score).toFixed(1);;
+    info_log("Score: "+win_score+"/"+click_score+" : "+score_percent+"%");
 }
 function proximal(frequency, guessed_frequency){
-    proximity_buffer = 5;
+    proximity_buffer = 6;
     if (frequency+proximity_buffer >= guessed_frequency &&
         frequency-proximity_buffer <= guessed_frequency){
           return true;
@@ -145,5 +153,5 @@ function start_round() {
      ];
   play_tone(scale_segment[current_note]);
 }
-info_log("Score: "+win_score+"/"+click_score);
+info_log("Score: 0/0 : 0.0%");
 start_round();
