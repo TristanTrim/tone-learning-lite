@@ -2,6 +2,7 @@
 // Audio stuff
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var oscillator;
+var tone_sounding = false;
 function tone_init(pitch){
   oscillator = audioCtx.createOscillator();
   oscillator.type = 'sine';
@@ -10,12 +11,15 @@ function tone_init(pitch){
 }
 var tone_play_time = 150;
 function play_tone(pitch){
+  if (tone_sounding) { stop_tone(); }
   tone_init(pitch);
   oscillator.start();
+  tone_sounding = true;
   setTimeout(stop_tone, tone_play_time);
 }
 function stop_tone(){
   oscillator.stop();
+  tone_sounding = false;
 }
 function repeat_tone() {
   play_tone(scale_segment[current_note]);
