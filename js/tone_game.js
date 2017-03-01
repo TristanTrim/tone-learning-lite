@@ -11,11 +11,12 @@ function tone_init(pitch){
 }
 var tone_play_time = 150;
 function play_tone(pitch){
-  if (tone_sounding) { stop_tone(); }
-  tone_init(pitch);
-  oscillator.start();
-  tone_sounding = true;
-  setTimeout(stop_tone, tone_play_time);
+  if (!tone_sounding) {
+    tone_init(pitch);
+    oscillator.start();
+    tone_sounding = true;
+    setTimeout(stop_tone, tone_play_time);
+  }
 }
 function stop_tone(){
   oscillator.stop();
