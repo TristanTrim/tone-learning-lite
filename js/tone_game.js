@@ -9,7 +9,7 @@ function tone_init(pitch){
   oscillator.frequency.value = pitch; // value in hertz
   oscillator.connect(audioCtx.destination);
 }
-var tone_play_time = 150;
+var tone_play_time = 300;
 function play_tone(pitch){
   if (!tone_sounding) {
     tone_init(pitch);
